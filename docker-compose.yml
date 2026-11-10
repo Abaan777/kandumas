@@ -1,0 +1,54 @@
+services:
+  # container_name kept as "fishcatch_mysql" to match the already-provisioned local
+  # container/volume from before the project was renamed to Kandumas -- MySQL only
+  # creates MYSQL_DATABASE/MYSQL_USER on a volume's first init, so renaming this
+  # service won't rename the live DB, it'll just orphan it. A fresh `docker compose up`
+  # (empty volume) picks up the kandumas_* fallback defaults below.
+  mysql:
+    image: mysql:8.0
+    container_name: fishcatch_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change-me-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-kandumas_db}
+      MYSQL_USER: ${MYSQL_USER:-kandumas}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change-me}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-change-me-root}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build: ./backend
+    container_name: kandumas_backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./backend/app/ml/artifacts:/app/app/ml/artifacts
+
+  frontend:
+    build: ./frontend
+    container_name: kandumas_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  mysql_data:

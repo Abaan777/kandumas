@@ -1,0 +1,192 @@
+{
+  "lstm": [
+    {
+      "species": "Skipjack tuna",
+      "model_name": "lstm",
+      "feature_cols": [
+        "catch_kg",
+        "sst",
+        "wind_speed",
+        "salinity"
+      ],
+      "window": 6,
+      "target_transform": "log1p",
+      "n_train": 120,
+      "n_test": 31,
+      "rmse": 3788709.3433589325,
+      "mape": 70.3463804189518,
+      "mean_actual_catch": 8124358.0253305705,
+      "train_start": "2010-06-01",
+      "train_end": "2025-12-01"
+    },
+    {
+      "species": "Yellowfin tuna",
+      "model_name": "lstm",
+      "feature_cols": [
+        "catch_kg",
+        "sst",
+        "wind_speed",
+        "salinity"
+      ],
+      "window": 6,
+      "target_transform": "none",
+      "n_train": 120,
+      "n_test": 31,
+      "rmse": 894385.6970402079,
+      "mape": 32.15182852683679,
+      "mean_actual_catch": 2433759.888985291,
+      "train_start": "2010-06-01",
+      "train_end": "2025-12-01"
+    }
+  ],
+  "prophet": [
+    {
+      "region": "Central Maldives (Male)",
+      "species": "Skipjack tuna",
+      "model_name": "prophet",
+      "regressors": [
+        "sst",
+        "wind_speed"
+      ],
+      "target_transform": "log1p",
+      "n_train": 79,
+      "n_test": 20,
+      "rmse": 900760.3668270865,
+      "mape": 49.53199066506936,
+      "mean_actual_catch": 2147609.269262372,
+      "train_start": "2010-01-01",
+      "train_end": "2024-04-01"
+    },
+    {
+      "region": "Central Maldives (Male)",
+      "species": "Yellowfin tuna",
+      "model_name": "prophet",
+      "regressors": [
+        "sst",
+        "wind_speed"
+      ],
+      "target_transform": "log1p",
+      "n_train": 79,
+      "n_test": 20,
+      "rmse": 527857.1411437353,
+      "mape": 30.22522906819364,
+      "mean_actual_catch": 1258680.5520552702,
+      "train_start": "2010-01-01",
+      "train_end": "2024-04-01"
+    },
+    {
+      "region": "North Maldives",
+      "species": "Skipjack tuna",
+      "model_name": "prophet",
+      "regressors": [
+        "sst",
+        "wind_speed"
+      ],
+      "target_transform": "none",
+      "n_train": 100,
+      "n_test": 26,
+      "rmse": 425635.7072283306,
+      "mape": 66.15769110909014,
+      "mean_actual_catch": 823565.2210062395,
+      "train_start": "2010-01-01",
+      "train_end": "2023-10-01"
+    },
+    {
+      "region": "North Maldives",
+      "species": "Yellowfin tuna",
+      "model_name": "prophet",
+      "regressors": [
+        "sst",
+        "wind_speed"
+      ],
+      "target_transform": "none",
+      "n_train": 100,
+      "n_test": 26,
+      "rmse": 359115.88047957415,
+      "mape": 49.1702477859841,
+      "mean_actual_catch": 773885.0616925627,
+      "train_start": "2010-01-01",
+      "train_end": "2023-10-01"
+    },
+    {
+      "region": "South Maldives",
+      "species": "Skipjack tuna",
+      "model_name": "prophet",
+      "regressors": [
+        "sst",
+        "wind_speed"
+      ],
+      "target_transform": "none",
+      "n_train": 115,
+      "n_test": 29,
+      "rmse": 2973767.2524538743,
+      "mape": 644.8961169997823,
+      "mean_actual_catch": 5614200.833962419,
+      "train_start": "2010-01-01",
+      "train_end": "2023-07-01"
+    },
+    {
+      "region": "South Maldives",
+      "species": "Yellowfin tuna",
+      "model_name": "prophet",
+      "regressors": [
+        "sst",
+        "wind_speed"
+      ],
+      "target_transform": "none",
+      "n_train": 115,
+      "n_test": 29,
+      "rmse": 307605.13798706874,
+      "mape": 138.28865922140392,
+      "mean_actual_catch": 491145.38321944996,
+      "train_start": "2010-01-01",
+      "train_end": "2023-07-01"
+    }
+  ],
+  "summary": {
+    "per_region_species_choice": [
+      {
+        "region": "Central Maldives (Male)",
+        "species": "Skipjack tuna",
+        "best_model": "prophet",
+        "prophet_rmse": 900760.3668270865,
+        "lstm_rmse": 3788709.3433589325
+      },
+      {
+        "region": "Central Maldives (Male)",
+        "species": "Yellowfin tuna",
+        "best_model": "prophet",
+        "prophet_rmse": 527857.1411437353,
+        "lstm_rmse": 894385.6970402079
+      },
+      {
+        "region": "North Maldives",
+        "species": "Skipjack tuna",
+        "best_model": "prophet",
+        "prophet_rmse": 425635.7072283306,
+        "lstm_rmse": 3788709.3433589325
+      },
+      {
+        "region": "North Maldives",
+        "species": "Yellowfin tuna",
+        "best_model": "prophet",
+        "prophet_rmse": 359115.88047957415,
+        "lstm_rmse": 894385.6970402079
+      },
+      {
+        "region": "South Maldives",
+        "species": "Skipjack tuna",
+        "best_model": "prophet",
+        "prophet_rmse": 2973767.2524538743,
+        "lstm_rmse": 3788709.3433589325
+      },
+      {
+        "region": "South Maldives",
+        "species": "Yellowfin tuna",
+        "best_model": "prophet",
+        "prophet_rmse": 307605.13798706874,
+        "lstm_rmse": 894385.6970402079
+      }
+    ]
+  }
+}

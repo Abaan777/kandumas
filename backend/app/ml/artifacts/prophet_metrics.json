@@ -1,0 +1,104 @@
+[
+  {
+    "region": "Central Maldives (Male)",
+    "species": "Skipjack tuna",
+    "model_name": "prophet",
+    "regressors": [
+      "sst",
+      "wind_speed"
+    ],
+    "target_transform": "log1p",
+    "n_train": 79,
+    "n_test": 20,
+    "rmse": 900760.3668270865,
+    "mape": 49.53199066506936,
+    "mean_actual_catch": 2147609.269262372,
+    "train_start": "2010-01-01",
+    "train_end": "2024-04-01"
+  },
+  {
+    "region": "Central Maldives (Male)",
+    "species": "Yellowfin tuna",
+    "model_name": "prophet",
+    "regressors": [
+      "sst",
+      "wind_speed"
+    ],
+    "target_transform": "log1p",
+    "n_train": 79,
+    "n_test": 20,
+    "rmse": 527857.1411437353,
+    "mape": 30.22522906819364,
+    "mean_actual_catch": 1258680.5520552702,
+    "train_start": "2010-01-01",
+    "train_end": "2024-04-01"
+  },
+  {
+    "region": "North Maldives",
+    "species": "Skipjack tuna",
+    "model_name": "prophet",
+    "regressors": [
+      "sst",
+      "wind_speed"
+    ],
+    "target_transform": "none",
+    "n_train": 100,
+    "n_test": 26,
+    "rmse": 425635.7072283306,
+    "mape": 66.15769110909014,
+    "mean_actual_catch": 823565.2210062395,
+    "train_start": "2010-01-01",
+    "train_end": "2023-10-01"
+  },
+  {
+    "region": "North Maldives",
+    "species": "Yellowfin tuna",
+    "model_name": "prophet",
+    "regressors": [
+      "sst",
+      "wind_speed"
+    ],
+    "target_transform": "none",
+    "n_train": 100,
+    "n_test": 26,
+    "rmse": 359115.88047957415,
+    "mape": 49.1702477859841,
+    "mean_actual_catch": 773885.0616925627,
+    "train_start": "2010-01-01",
+    "train_end": "2023-10-01"
+  },
+  {
+    "region": "South Maldives",
+    "species": "Skipjack tuna",
+    "model_name": "prophet",
+    "regressors": [
+      "sst",
+      "wind_speed"
+    ],
+    "target_transform": "none",
+    "n_train": 115,
+    "n_test": 29,
+    "rmse": 2973767.2524538743,
+    "mape": 644.8961169997823,
+    "mean_actual_catch": 5614200.833962419,
+    "train_start": "2010-01-01",
+    "train_end": "2023-07-01"
+  },
+  {
+    "region": "South Maldives",
+    "species": "Yellowfin tuna",
+    "model_name": "prophet",
+    "regressors": [
+      "sst",
+      "wind_speed"
+    ],
+    "target_transform": "none",
+    "n_train": 115,
+    "n_test": 29,
+    "rmse": 307605.13798706874,
+    "mape": 138.28865922140392,
+    "mean_actual_catch": 491145.38321944996,
+    "train_start": "2010-01-01",
+    "train_end": "2023-07-01"
+  }
+]

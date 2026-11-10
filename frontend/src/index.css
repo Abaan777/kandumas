@@ -1,0 +1,667 @@
+:root {
+  --color-bg: #f4f7f6;
+  --color-surface: #ffffff;
+  --color-primary: #1f6f8b;
+  --color-primary-dark: #16515f;
+  --color-accent: #2fa876;
+  --color-text: #1c2b2d;
+  --color-muted: #6b7c7e;
+  --color-border: #e1e8e7;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: var(--color-primary-dark);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.6rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  flex: 1;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar .brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--color-accent);
+  color: white;
+}
+
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Collapsed by default on narrow screens; opened via the hamburger toggle. */
+.navbar-collapsible {
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.navbar.menu-open .navbar-collapsible {
+  display: flex;
+}
+
+.navbar .links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.navbar .links a {
+  display: block;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.navbar .links a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar .links a.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.navbar .divider {
+  display: none;
+}
+
+.navbar .user-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.navbar .user-chip .username,
+.navbar .user-chip .role {
+  white-space: nowrap;
+}
+
+@media (min-width: 860px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .navbar-collapsible {
+    display: flex !important;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .navbar .links {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .navbar .links a {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+  }
+
+  .navbar .divider {
+    display: block;
+    width: 1px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.18);
+    margin: 0 0.4rem;
+  }
+
+  .navbar .user-chip {
+    justify-content: flex-start;
+    padding-top: 0;
+    border-top: none;
+    white-space: nowrap;
+  }
+}
+
+.navbar .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.navbar .user-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.navbar .user-meta .username {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.navbar .user-meta .role {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: capitalize;
+}
+
+.navbar button {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.navbar button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.page {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 1rem 0.85rem;
+  }
+}
+
+/* Dashboard's forecast chart + key metrics row. */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 860px) {
+  .two-col-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Historical's SST / wind speed / salinity row -- naturally reflows without a fixed
+   breakpoint since each card needs at least ~240px to stay readable. */
+.trio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Keeps columns at a readable width and lets .table-scroll handle overflow with a
+   horizontal swipe, instead of every cell wrapping into a cramped multi-line mess on
+   a phone-width screen. */
+.table-scroll table.data-table {
+  min-width: 540px;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  /* Grid/flex items default to min-width: auto, which lets a wide descendant (e.g. a
+     scrollable chart that's intentionally wider than its frame, see .chart-scroll)
+     stretch the whole card/column to fit it instead of scrolling inside it. This
+     forces the card to stay at its track's width and let overflow:auto do its job. */
+  min-width: 0;
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.filter-field label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.filter-field select,
+.filter-field input {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-width: 160px;
+}
+
+@media (max-width: 640px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-field select,
+  .filter-field input {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.metric-tile {
+  background: #eef6f4;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+}
+
+.metric-tile .label {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.metric-tile .value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #1f6f8b, #2fa876);
+}
+
+.login-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: min(360px, 100%);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 420px) {
+  .login-card {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+.login-card h1 {
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.login-card p.subtitle {
+  color: var(--color-muted);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.login-card input,
+.login-card select {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.login-card button {
+  width: 100%;
+}
+
+.password-field {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.password-field input {
+  margin-bottom: 0;
+  padding-right: 2.5rem;
+}
+
+.password-field .password-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 2.5rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-muted);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.password-field .password-toggle:hover {
+  color: var(--color-primary);
+}
+
+.error-text {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+table.data-table th,
+table.data-table td {
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+}
+
+table.data-table th {
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-best {
+  background: #d7f5e3;
+  color: #1a7a4c;
+}
+
+.badge-model {
+  background: #e5edf7;
+  color: var(--color-primary-dark);
+}
+
+.chart-wrap {
+  position: relative;
+  height: 320px;
+}
+
+/* A fixed-width axis column (first .chart-wrap child) beside a horizontally-scrolling
+   plot (.chart-scroll, see ForecastChart.jsx) -- same technique as a spreadsheet's
+   frozen header column. */
+.chart-fixed-row {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Keeps the card's own footprint fixed while its .chart-wrap child is drawn wider than
+   that frame -- the extra width scrolls inside this box instead of stretching the
+   card or the page layout. min-width: 0 matters here for the same reason .card needed
+   it: a flex item defaults to min-width: auto, which would otherwise let the wide
+   child push .chart-fixed-row (and the card) wide again instead of scrolling. */
+.chart-scroll {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.map-wrap {
+  height: 320px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .chart-wrap,
+  .map-wrap {
+    height: 260px;
+  }
+}
+
+.helper-text {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.success-text {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin: -0.5rem 0 1rem;
+}
+
+.auth-links a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-footer {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.reset-link-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.6rem 0.7rem;
+  margin: 0.75rem 0;
+}
+
+.reset-link-box code {
+  flex: 1;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-size: 0.8rem;
+}
+
+.daily-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.daily-tile {
+  background: #f7faf9;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.daily-tile-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.daily-tile-date {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.daily-tile-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.daily-tile-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid;
+  margin-bottom: 0.5rem;
+}
+
+.daily-tile-conditions {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}

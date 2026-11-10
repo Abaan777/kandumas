@@ -1,0 +1,40 @@
+[
+  {
+    "species": "Skipjack tuna",
+    "model_name": "lstm",
+    "feature_cols": [
+      "catch_kg",
+      "sst",
+      "wind_speed",
+      "salinity"
+    ],
+    "window": 6,
+    "target_transform": "log1p",
+    "n_train": 120,
+    "n_test": 31,
+    "rmse": 3788709.3433589325,
+    "mape": 70.3463804189518,
+    "mean_actual_catch": 8124358.0253305705,
+    "train_start": "2010-06-01",
+    "train_end": "2025-12-01"
+  },
+  {
+    "species": "Yellowfin tuna",
+    "model_name": "lstm",
+    "feature_cols": [
+      "catch_kg",
+      "sst",
+      "wind_speed",
+      "salinity"
+    ],
+    "window": 6,
+    "target_transform": "none",
+    "n_train": 120,
+    "n_test": 31,
+    "rmse": 894385.6970402079,
+    "mape": 32.15182852683679,
+    "mean_actual_catch": 2433759.888985291,
+    "train_start": "2010-06-01",
+    "train_end": "2025-12-01"
+  }
+]
