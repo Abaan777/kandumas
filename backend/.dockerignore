@@ -1,8 +1,4 @@
 .venv
 __pycache__
 *.pyc
-app/ml/artifacts/*.keras
-app/ml/artifacts/*.h5
-app/ml/artifacts/*.json
-app/ml/artifacts/*.joblib
 .env
