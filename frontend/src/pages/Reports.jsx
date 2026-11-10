@@ -5,7 +5,7 @@ import { downloadReport } from "../api/client.js";
 export default function Reports() {
   const [filters, setFilters] = useState({ region: "North Maldives", species: "Skipjack tuna" });
   const [monthsAhead, setMonthsAhead] = useState(3);
-  const [format, setFormat] = useState("csv");
+  const [format, setFormat] = useState("pdf");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState([]);
